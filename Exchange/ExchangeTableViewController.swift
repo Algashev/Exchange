@@ -18,7 +18,6 @@ class ExchangeTableViewController: UITableViewController {
         self.reloadData()
         self.timer.eventHandler = { [unowned self] in
 //            print("Timer Fired")
-            self.valutes = [Valute]()
             self.reloadData()
         }
         self.timer.resume()
