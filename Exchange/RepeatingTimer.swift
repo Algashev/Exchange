@@ -12,10 +12,15 @@ import Foundation
 /// crashes that occur from calling resume multiple times on a timer that is
 /// already resumed (noted by https://github.com/SiftScience/sift-ios/issues/52
 class RepeatingTimer {
+    private enum State {
+        case suspended
+        case resumed
+    }
     
     let timeInterval: TimeInterval
-    private var timer: DispatchSourceTimer?
     var eventHandler: (() -> Void)?
+    private var timer: DispatchSourceTimer?
+    private var state: State = .suspended
     
     init(timeInterval: TimeInterval) {
         self.timeInterval = timeInterval
@@ -30,13 +35,6 @@ class RepeatingTimer {
         })
         self.timer = timer
     }
-    
-    private enum State {
-        case suspended
-        case resumed
-    }
-    
-    private var state: State = .suspended
     
     deinit {
         self.destroy()
