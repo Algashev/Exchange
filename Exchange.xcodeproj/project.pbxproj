@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF4ACA4123E5E42F00BE35CA /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4ACA4023E5E42F00BE35CA /* ExchangeViewModel.swift */; };
+		FF4ACA4323E5E51B00BE35CA /* ValuteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4ACA4223E5E51B00BE35CA /* ValuteCellViewModel.swift */; };
+		FF4ACA4523E5E93600BE35CA /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4ACA4423E5E93600BE35CA /* Double.swift */; };
 		FFCBE30C2327B6A50037ABA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCBE30B2327B6A50037ABA0 /* AppDelegate.swift */; };
 		FFCBE3112327B6A50037ABA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCBE30F2327B6A50037ABA0 /* Main.storyboard */; };
 		FFCBE3132327B6A60037ABA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFCBE3122327B6A60037ABA0 /* Assets.xcassets */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF4ACA4023E5E42F00BE35CA /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
+		FF4ACA4223E5E51B00BE35CA /* ValuteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuteCellViewModel.swift; sourceTree = "<group>"; };
+		FF4ACA4423E5E93600BE35CA /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		FFCBE3082327B6A50037ABA0 /* Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFCBE30B2327B6A50037ABA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFCBE3102327B6A50037ABA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,6 +51,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF4ACA4623E5EB7B00BE35CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FF4ACA4023E5E42F00BE35CA /* ExchangeViewModel.swift */,
+				FF4ACA4223E5E51B00BE35CA /* ValuteCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FF4ACA4723E5EB9700BE35CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFCBE31D2327C61C0037ABA0 /* ExchangeTableViewController.swift */,
+				FFCBE32A23282F5C0037ABA0 /* ValuteCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FFCBE2FF2327B6A50037ABA0 = {
 			isa = PBXGroup;
 			children = (
@@ -66,9 +90,10 @@
 			children = (
 				FFCBE30F2327B6A50037ABA0 /* Main.storyboard */,
 				FFCBE30B2327B6A50037ABA0 /* AppDelegate.swift */,
-				FFCBE31D2327C61C0037ABA0 /* ExchangeTableViewController.swift */,
+				FF4ACA4723E5EB9700BE35CA /* View */,
+				FF4ACA4623E5EB7B00BE35CA /* ViewModel */,
 				FFCBE31F2327CAE40037ABA0 /* Valute.swift */,
-				FFCBE32A23282F5C0037ABA0 /* ValuteCell.swift */,
+				FF4ACA4423E5E93600BE35CA /* Double.swift */,
 				FFCBE32C23283CFE0037ABA0 /* RepeatingTimer.swift */,
 				FFCBE329232825770037ABA0 /* NetworkService */,
 				FFCBE3122327B6A60037ABA0 /* Assets.xcassets */,
@@ -159,11 +184,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFCBE32B23282F5C0037ABA0 /* ValuteCell.swift in Sources */,
+				FF4ACA4123E5E42F00BE35CA /* ExchangeViewModel.swift in Sources */,
 				FFCBE31E2327C61C0037ABA0 /* ExchangeTableViewController.swift in Sources */,
 				FFCBE32D23283CFE0037ABA0 /* RepeatingTimer.swift in Sources */,
+				FF4ACA4323E5E51B00BE35CA /* ValuteCellViewModel.swift in Sources */,
 				FFCBE3202327CAE40037ABA0 /* Valute.swift in Sources */,
 				FFCBE3242327DBCE0037ABA0 /* ValuteNetworkService.swift in Sources */,
 				FFCBE3222327CD640037ABA0 /* NetworkService.swift in Sources */,
+				FF4ACA4523E5E93600BE35CA /* Double.swift in Sources */,
 				FFCBE30C2327B6A50037ABA0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

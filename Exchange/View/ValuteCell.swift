@@ -13,11 +13,12 @@ class ValuteCell: UITableViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var valueLabel: UILabel!
     
-    func configure(with valute: Valute) {
-        self.charCodeLabel.text = valute.charCode
-        
-        let valuteName = valute.nominal > 1 ? "\(valute.nominal) \(valute.name)" : "\(valute.name)"
-        self.nameLabel.text = valuteName
-        self.valueLabel.text = String(format: "₽%.2f", valute.value)
+    weak var viewModel: CellViewModelType? {
+        willSet(viewModel) {
+            guard let viewModel = viewModel else { return }
+            self.charCodeLabel.text = viewModel.charCode
+            self.nameLabel.text = viewModel.name
+            self.valueLabel.text = viewModel.value
+        }
     }
 }
