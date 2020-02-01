@@ -14,20 +14,22 @@ import Foundation
 class RepeatingTimer {
     
     let timeInterval: TimeInterval
+    private var timer: DispatchSourceTimer?
     var eventHandler: (() -> Void)?
     
     init(timeInterval: TimeInterval) {
         self.timeInterval = timeInterval
+        self.configureTimer()
     }
     
-    private lazy var timer: DispatchSourceTimer = {
+    private func configureTimer() {
         let timer = DispatchSource.makeTimerSource()
         timer.schedule(deadline: .now() + self.timeInterval, repeating: self.timeInterval)
         timer.setEventHandler(handler: { [weak self] in
             self?.eventHandler?()
         })
-        return timer
-    }()
+        self.timer = timer
+    }
     
     private enum State {
         case suspended
@@ -37,13 +39,13 @@ class RepeatingTimer {
     private var state: State = .suspended
     
     deinit {
-        self.reset()
+        self.destroy()
         self.eventHandler = nil
     }
     
-    func reset() {
-        self.timer.setEventHandler {}
-        self.timer.cancel()
+    private func destroy() {
+        self.timer?.setEventHandler {}
+        self.timer?.cancel()
         /*
          If the timer is suspended, calling cancel without resuming
          triggers a crash. This is documented here https://forums.developer.apple.com/thread/15902
@@ -51,15 +53,21 @@ class RepeatingTimer {
         self.resume()
     }
     
+    func reset() {
+        self.destroy()
+        self.state = .suspended
+        self.configureTimer()
+    }
+    
     func resume() {
         if self.state == .resumed { return }
         self.state = .resumed
-        self.timer.resume()
+        self.timer?.resume()
     }
     
     func suspend() {
         if self.state == .suspended { return }
         self.state = .suspended
-        self.timer.suspend()
+        self.timer?.suspend()
     }
 }

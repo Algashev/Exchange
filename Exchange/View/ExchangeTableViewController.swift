@@ -10,27 +10,20 @@ import UIKit
 
 class ExchangeTableViewController: UITableViewController {
     private var viewModel: TableViewViewModelType = ExchangeViewModel()
-    private var timer: RepeatingTimer?
-    private var eventHandler: (() -> Void)?
+    private var timer = RepeatingTimer(timeInterval: 10)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.reloadData()
-        self.eventHandler = { [weak self] in self?.reloadData() }
-        self.configureRepeatingTimer()
-    }
-    
-    private func configureRepeatingTimer() {
-        self.timer = nil
-        self.timer = RepeatingTimer(timeInterval: 30)
-        self.timer?.eventHandler = self.eventHandler
-        self.timer?.resume()
+        self.timer.eventHandler = { [weak self] in self?.reloadData() }
+        self.timer.resume()
     }
 
     @IBAction func refreshData(_ sender: Any) {
         self.reloadData()
-        self.configureRepeatingTimer()
+        self.timer.reset()
+        self.timer.resume()
     }
     
     private func reloadData() {
