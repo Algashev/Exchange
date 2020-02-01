@@ -35,7 +35,7 @@ class NetworkService {
                     }
                 } catch {
                     print(error)
-                    completion(nil, response as? HTTPURLResponse, error.localizedDescription)
+                    completion(nil, httpResponse, error.localizedDescription)
                 }
             } else {
                 print("Ошибка \(httpResponse)")

@@ -9,18 +9,13 @@
 import Foundation
 
 class ValuteNetworkService {
-    private init() {}
-    
-    static func getValutes(completion: @escaping(GetValuteResponse) -> ()) {
+    static func getValutes(completion: @escaping(Daily) -> ()) {
         guard let url = URL(string: "https://www.cbr-xml-daily.ru/daily_json.js") else { return }
 
-        NetworkService.requestJSON(from: url) { (json: Daily) in
-//            do {
-//                let response = try GetValuteResponse(json: json)
-//                completion(response)
-//            } catch {
-//                print(error)
-//            }
+        NetworkService.requestJSON(from: url) { (daily: Daily?, response, error) in
+            if let daily = daily {
+                completion(daily)
+            }
         }
     }
 }
