@@ -25,7 +25,7 @@ class ExchangeTableViewController: UITableViewController {
     
     private func reloadData() {
         ValuteNetworkService.getValutes { (daily) in
-            self.valutes = Array(daily.Valute.values).sorted { $0.CharCode < $1.CharCode }
+            self.valutes = Array(daily.valutes.values).sorted { $0.CharCode < $1.CharCode }
             self.tableView.reloadData()
 //            print("Data was reloaded...")
         }

@@ -9,11 +9,17 @@
 import Foundation
 
 struct Daily: Codable {
-    let Date: String
-    let PreviousDate: String
-    let PreviousURL: String
-    let Timestamp: String
-    let Valute: [String: Valute]
+    private let Date: String
+    private let PreviousDate: String
+    private let PreviousURL: String
+    private let Timestamp: String
+    private let Valute: [String: Valute]
+    
+    var date: String { return self.Date }
+    var previousDate: String { return self.PreviousDate }
+    var previousURL: String { return self.PreviousURL }
+    var timestamp: String { return self.Timestamp }
+    var valutes: [String: Valute] { return self.Valute }
 }
 
 struct Valute: Codable {
