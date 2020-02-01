@@ -23,11 +23,19 @@ struct Daily: Codable {
 }
 
 struct Valute: Codable {
-    let ID: String
-    let NumCode: String
-    let CharCode: String
-    let Nominal: Int
-    let Name: String
-    let Value: Double
-    let Previous: Double
+    private let ID: String
+    private let NumCode: String
+    private let CharCode: String
+    private let Nominal: Int
+    private let Name: String
+    private let Value: Double
+    private let Previous: Double
+    
+    var id: String { return self.ID }
+    var numCode: String { return self.NumCode }
+    var charCode: String { return self.CharCode }
+    var nominal: Int { return self.Nominal }
+    var name: String { return self.Name }
+    var value: Double { return self.Value }
+    var previous: Double { return self.Previous }
 }
