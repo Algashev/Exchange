@@ -9,14 +9,12 @@
 import Foundation
 
 class NetworkService {
-    private init() {}
-    static let shared = NetworkService()
-    
-    func requestJSON(from url: URL, completion: @escaping (Any) -> ()) {
+    static func requestJSON<T: Codable>(from url: URL, completion: @escaping (T?, _ response: HTTPURLResponse?, _ error: String?) -> ()) {
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, error) in
             if let error = error {
-                print(error.localizedDescription)
+                print(error)
+                completion(nil, response as? HTTPURLResponse, error.localizedDescription)
                 return
             }
             guard
@@ -24,20 +22,24 @@ class NetworkService {
                 let httpResponse = response as? HTTPURLResponse
             else {
                 print("Ошибка не определена \(String(describing: response))")
+                completion(nil, nil, String(describing: response))
                 return
             }
             if httpResponse.statusCode == 200 {
                 do {
                     let decoder = JSONDecoder()
-                    let valutes = try decoder.decode(Daily.self, from: data)
+                    let result = try decoder.decode(T.self, from: data)
+                    print("NetworkService status: Success")
                     DispatchQueue.main.async {
-                        completion(valutes)
+                        completion(result, httpResponse, nil)
                     }
                 } catch {
-                    print(error.localizedDescription)
+                    print(error)
+                    completion(nil, response as? HTTPURLResponse, error.localizedDescription)
                 }
             } else {
                 print("Ошибка \(httpResponse)")
+                completion(nil, httpResponse, "\(httpResponse)")
             }
         }.resume()
     }

@@ -13,7 +13,7 @@ struct Daily: Codable {
     let PreviousDate: String
     let PreviousURL: String
     let Timestamp: String
-    let Valute: [[String: Valute]]
+    let Valute: [String: Valute]
 }
 
 struct Valute: Codable {

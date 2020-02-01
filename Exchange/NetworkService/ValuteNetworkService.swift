@@ -14,13 +14,13 @@ class ValuteNetworkService {
     static func getValutes(completion: @escaping(GetValuteResponse) -> ()) {
         guard let url = URL(string: "https://www.cbr-xml-daily.ru/daily_json.js") else { return }
 
-        NetworkService.shared.requestJSON(from: url) { (json) in
-            do {
-                let response = try GetValuteResponse(json: json)
-                completion(response)
-            } catch {
-                print(error)
-            }
+        NetworkService.requestJSON(from: url) { (json: Daily) in
+//            do {
+//                let response = try GetValuteResponse(json: json)
+//                completion(response)
+//            } catch {
+//                print(error)
+//            }
         }
     }
 }

@@ -11,20 +11,20 @@ import Foundation
 struct GetValuteResponse {
     let valutes: [Valute]
     
-    init(json: Any) throws {
-        guard
-            let jsonDictionary = json as? [String: AnyObject],
-            let valutesDictionary = jsonDictionary["Valute"] as? [String: AnyObject]
-        else { throw NetworkError.failedGetValuesFromJSON }
-        
-        var valutes = [Valute]()
-        for (_, value) in valutesDictionary {
-            guard
-                let dictionary = value as? [String: AnyObject],
-                let valute = Valute(dictionary: dictionary)
-            else { continue }
-            valutes.append(valute)
-        }
-        self.valutes = valutes.sorted(by: { $0.charCode < $1.charCode })
-    }
+//    init(json: Any) throws {
+//        guard
+//            let jsonDictionary = json as? [String: AnyObject],
+//            let valutesDictionary = jsonDictionary["Valute"] as? [String: AnyObject]
+//        else { throw NetworkError.failedGetValuesFromJSON }
+//
+//        var valutes = [Valute]()
+//        for (_, value) in valutesDictionary {
+//            guard
+//                let dictionary = value as? [String: AnyObject],
+//                let valute = Valute(dictionary: dictionary)
+//            else { continue }
+//            valutes.append(valute)
+//        }
+//        self.valutes = valutes.sorted(by: { $0.charCode < $1.charCode })
+//    }
 }
