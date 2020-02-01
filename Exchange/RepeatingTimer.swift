@@ -20,12 +20,12 @@ class RepeatingTimer {
     }
     
     private lazy var timer: DispatchSourceTimer = {
-        let t = DispatchSource.makeTimerSource()
-        t.schedule(deadline: .now() + self.timeInterval, repeating: self.timeInterval)
-        t.setEventHandler(handler: { [weak self] in
+        let timer = DispatchSource.makeTimerSource()
+        timer.schedule(deadline: .now() + self.timeInterval, repeating: self.timeInterval)
+        timer.setEventHandler(handler: { [weak self] in
             self?.eventHandler?()
         })
-        return t
+        return timer
     }()
     
     var eventHandler: (() -> Void)?
