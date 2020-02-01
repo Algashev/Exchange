@@ -8,32 +8,20 @@
 
 import Foundation
 
-struct Valute {
-    var iD: String
-    var numCode: String
-    var charCode: String
-    var nominal: Int
-    var name: String
-    var value: Double
-    var previous: Double
-    
-    init?(dictionary: [String: AnyObject]) {
-        guard
-            let iD = dictionary["ID"] as? String,
-            let numCode = dictionary["NumCode"] as? String,
-            let charCode = dictionary["CharCode"] as? String,
-            let nominal = dictionary["Nominal"] as? Int,
-            let name = dictionary["Name"] as? String,
-            let value = dictionary["Value"] as? Double,
-            let previous = dictionary["Previous"] as? Double
-        else { return nil }
-        
-        self.iD = iD
-        self.numCode = numCode
-        self.charCode = charCode
-        self.nominal = nominal
-        self.name = name
-        self.value = value
-        self.previous = previous
-    }
+struct Daily: Codable {
+    let Date: String
+    let PreviousDate: String
+    let PreviousURL: String
+    let Timestamp: String
+    let Valute: [[String: Valute]]
+}
+
+struct Valute: Codable {
+    let ID: String
+    let NumCode: String
+    let CharCode: String
+    let Nominal: Int
+    let Name: String
+    let Value: Double
+    let Previous: Double
 }
