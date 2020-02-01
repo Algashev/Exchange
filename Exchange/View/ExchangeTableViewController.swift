@@ -10,7 +10,7 @@ import UIKit
 
 class ExchangeTableViewController: UITableViewController {
     private var viewModel: TableViewViewModelType = ExchangeViewModel()
-    private var timer = RepeatingTimer(timeInterval: 10)
+    private var timer = RepeatingTimer(timeInterval: 30)
 
     override func viewDidLoad() {
         super.viewDidLoad()
