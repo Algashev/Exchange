@@ -15,7 +15,7 @@
 		FFCBE3202327CAE40037ABA0 /* Valute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCBE31F2327CAE40037ABA0 /* Valute.swift */; };
 		FFCBE3222327CD640037ABA0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCBE3212327CD640037ABA0 /* NetworkService.swift */; };
 		FFCBE3242327DBCE0037ABA0 /* ValuteNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCBE3232327DBCE0037ABA0 /* ValuteNetworkService.swift */; };
-		FFCBE32B23282F5C0037ABA0 /* ValuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCBE32A23282F5C0037ABA0 /* ValuteTableViewCell.swift */; };
+		FFCBE32B23282F5C0037ABA0 /* ValuteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCBE32A23282F5C0037ABA0 /* ValuteCell.swift */; };
 		FFCBE32D23283CFE0037ABA0 /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCBE32C23283CFE0037ABA0 /* RepeatingTimer.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +30,7 @@
 		FFCBE31F2327CAE40037ABA0 /* Valute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Valute.swift; sourceTree = "<group>"; };
 		FFCBE3212327CD640037ABA0 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FFCBE3232327DBCE0037ABA0 /* ValuteNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuteNetworkService.swift; sourceTree = "<group>"; };
-		FFCBE32A23282F5C0037ABA0 /* ValuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuteTableViewCell.swift; sourceTree = "<group>"; };
+		FFCBE32A23282F5C0037ABA0 /* ValuteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuteCell.swift; sourceTree = "<group>"; };
 		FFCBE32C23283CFE0037ABA0 /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +68,7 @@
 				FFCBE30B2327B6A50037ABA0 /* AppDelegate.swift */,
 				FFCBE31D2327C61C0037ABA0 /* ExchangeTableViewController.swift */,
 				FFCBE31F2327CAE40037ABA0 /* Valute.swift */,
-				FFCBE32A23282F5C0037ABA0 /* ValuteTableViewCell.swift */,
+				FFCBE32A23282F5C0037ABA0 /* ValuteCell.swift */,
 				FFCBE32C23283CFE0037ABA0 /* RepeatingTimer.swift */,
 				FFCBE329232825770037ABA0 /* NetworkService */,
 				FFCBE3122327B6A60037ABA0 /* Assets.xcassets */,
@@ -158,7 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFCBE32B23282F5C0037ABA0 /* ValuteTableViewCell.swift in Sources */,
+				FFCBE32B23282F5C0037ABA0 /* ValuteCell.swift in Sources */,
 				FFCBE31E2327C61C0037ABA0 /* ExchangeTableViewController.swift in Sources */,
 				FFCBE32D23283CFE0037ABA0 /* RepeatingTimer.swift in Sources */,
 				FFCBE3202327CAE40037ABA0 /* Valute.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ValuteTableViewCell: UITableViewCell {
+class ValuteCell: UITableViewCell {
     @IBOutlet private weak var charCodeLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var valueLabel: UILabel!
