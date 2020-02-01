@@ -30,9 +30,7 @@ class NetworkService {
                     let decoder = JSONDecoder()
                     let result = try decoder.decode(T.self, from: data)
                     print("NetworkService status: Success")
-                    DispatchQueue.main.async {
-                        completion(result, httpResponse, nil)
-                    }
+                    completion(result, httpResponse, nil)
                 } catch {
                     print(error)
                     completion(nil, httpResponse, error.localizedDescription)

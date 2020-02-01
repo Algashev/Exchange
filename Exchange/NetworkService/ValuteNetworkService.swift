@@ -14,7 +14,9 @@ class ValuteNetworkService {
 
         NetworkService.requestJSON(from: url) { (daily: Daily?, response, error) in
             if let daily = daily {
-                completion(daily)
+                DispatchQueue.main.async {
+                    completion(daily)
+                }
             }
         }
     }
