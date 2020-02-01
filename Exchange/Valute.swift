@@ -8,32 +8,34 @@
 
 import Foundation
 
-struct Valute {
-    var iD: String
-    var numCode: String
-    var charCode: String
-    var nominal: Int
-    var name: String
-    var value: Double
-    var previous: Double
+struct Daily: Codable {
+    private let Date: String
+    private let PreviousDate: String
+    private let PreviousURL: String
+    private let Timestamp: String
+    private let Valute: [String: Valute]
     
-    init?(dictionary: [String: AnyObject]) {
-        guard
-            let iD = dictionary["ID"] as? String,
-            let numCode = dictionary["NumCode"] as? String,
-            let charCode = dictionary["CharCode"] as? String,
-            let nominal = dictionary["Nominal"] as? Int,
-            let name = dictionary["Name"] as? String,
-            let value = dictionary["Value"] as? Double,
-            let previous = dictionary["Previous"] as? Double
-        else { return nil }
-        
-        self.iD = iD
-        self.numCode = numCode
-        self.charCode = charCode
-        self.nominal = nominal
-        self.name = name
-        self.value = value
-        self.previous = previous
-    }
+    var date: String { return self.Date }
+    var previousDate: String { return self.PreviousDate }
+    var previousURL: String { return self.PreviousURL }
+    var timestamp: String { return self.Timestamp }
+    var valutes: [String: Valute] { return self.Valute }
+}
+
+struct Valute: Codable {
+    private let ID: String
+    private let NumCode: String
+    private let CharCode: String
+    private let Nominal: Int
+    private let Name: String
+    private let Value: Double
+    private let Previous: Double
+    
+    var id: String { return self.ID }
+    var numCode: String { return self.NumCode }
+    var charCode: String { return self.CharCode }
+    var nominal: Int { return self.Nominal }
+    var name: String { return self.Name }
+    var value: Double { return self.Value }
+    var previous: Double { return self.Previous }
 }

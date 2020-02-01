@@ -24,8 +24,8 @@ class ExchangeTableViewController: UITableViewController {
     }
     
     private func reloadData() {
-        ValuteNetworkService.getValutes { (response) in
-            self.valutes = response.valutes
+        ValuteNetworkService.getValutes { (daily) in
+            self.valutes = Array(daily.valutes.values).sorted { $0.charCode < $1.charCode }
             self.tableView.reloadData()
 //            print("Data was reloaded...")
         }
@@ -37,13 +37,14 @@ class ExchangeTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return valutes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Prototype Cell", for: indexPath) as! ValuteTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Prototype Cell", for: indexPath) as? ValuteCell else { return UITableViewCell() }
 
 //         Configure the cell...
         cell.configure(with: valutes[indexPath.row])
