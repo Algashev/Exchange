@@ -9,7 +9,7 @@
 import Foundation
 
 class NetworkService {
-    static func requestJSON<T: Codable>(from url: URL, completion: @escaping (T?, _ response: HTTPURLResponse?, _ error: String?) -> ()) {
+    static func requestJSON<T: Decodable>(from url: URL, completion: @escaping (T?, _ response: HTTPURLResponse?, _ error: String?) -> ()) {
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, error) in
             if let error = error {
