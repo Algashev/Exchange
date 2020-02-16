@@ -21,7 +21,7 @@ class ValuteCellViewModel: CellViewModelType {
     var name: String {
         let nominal = self.valute.nominal
         let name = self.valute.name
-        return nominal > 1 ? "\(nominal) \(name)" : "\(name)"
+        return nominal > 1 ? "\(nominal) \(name)" : name
     }
     var value: String { return self.valute.value.format("₽%.2f") }
     

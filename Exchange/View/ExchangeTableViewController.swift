@@ -31,19 +31,20 @@ class ExchangeTableViewController: UITableViewController {
             self?.tableView.reloadData()
         }
     }
-    
-    // MARK: - Table view data source
-    
+}
+
+// MARK: - Table view data source
+
+extension ExchangeTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.numberOfRows
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Prototype Cell", for: indexPath) as? ValuteCell else { return UITableViewCell() }
-
+        let cell = tableView.dequeueReusableCell(ValuteCell.self, for: indexPath)
         let cellViewModel = self.viewModel.cellViewModel(ForRowAt: indexPath)
-        cell.viewModel = cellViewModel
+        cell?.viewModel = cellViewModel
 
-        return cell
+        return cell ?? UITableViewCell()
     }
 }
