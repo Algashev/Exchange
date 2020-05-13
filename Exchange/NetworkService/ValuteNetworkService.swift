@@ -10,11 +10,14 @@ import Foundation
 
 class ValuteNetworkService {
     static func getValutes(completion: @escaping(Daily) -> ()) {
-        guard let url = URL(string: "https://www.cbr-xml-daily.ru/daily_json.js") else { return }
+        guard let url = URL(string: "https://www.cbr-xml-daily.ru/daily_json.j") else { return }
 
-        NetworkService.requestJSON(from: url) { (daily: Daily?, response, error) in
-            if let daily = daily {
+        Networker<Daily>.requestData(from: url) { (result) in
+            switch result {
+            case .success(let daily):
                 DispatchQueue.main.async { completion(daily) }
+            case .failure(let error):
+                break
             }
         }
     }
