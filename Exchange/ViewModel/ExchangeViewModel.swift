@@ -25,7 +25,7 @@ class ExchangeViewModel: TableViewViewModelType {
     }
     
     func reloadData(completion: @escaping() -> ()) {
-        ValuteNetworkService.getValutes { [weak self] (daily) in
+        Networker.getValutes { [weak self] (daily) in
             self?.valutes = Array(daily.valutes.values).sorted { $0.charCode < $1.charCode }
             completion()
         }

@@ -8,15 +8,19 @@
 
 import Foundation
 
-class Networker<T: Decodable> {
-    typealias NetworkerCompletion = (_ result: Result<T, Error>) -> ()
+class Networker {
+    typealias NetworkerCompletion<T: Decodable> = (_ result: Result<T, Error>) -> ()
     
-    static func requestData(from url: URL, completion: @escaping NetworkerCompletion) {
+    static private func request<T: Decodable>(
+        _ type: T.Type,
+        from url: URL,
+        completion: @escaping NetworkerCompletion<T>)
+    {
         DispatchQueue(label: "algashev.Exchange.requestJSON").async {
-            Requester.getJSON(from: url) { (result) in
+            HttpClient.getJSON(from: url) { (result) in
                 switch result {
                 case .success(let jsonData):
-                    let parsingResult = Parser<T>.decode(jsonData)
+                    let parsingResult = JSONParser.decode(T.self, from: jsonData)
                     switch parsingResult {
                     case .success(let data):
                         completion(.success(data))
@@ -34,5 +38,20 @@ class Networker<T: Decodable> {
     
     private static func logError(_ error: Error, _ url: URL) {
         print("\(url): \(error.localizedDescription)")
+    }
+}
+
+extension Networker {
+    static func getValutes(completion: @escaping(Daily) -> ()) {
+        guard let url = URL(string: "https://www.cbr-xml-daily.ru/daily_json.js") else { return }
+
+        Networker.request(Daily.self, from: url) { (result) in
+            switch result {
+            case .success(let daily):
+                DispatchQueue.main.async { completion(daily) }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
