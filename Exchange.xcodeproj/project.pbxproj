@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF04F19224D49EB700BF6C58 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04F19124D49EB700BF6C58 /* Decodable.swift */; };
 		FF4ACA4123E5E42F00BE35CA /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4ACA4023E5E42F00BE35CA /* ExchangeViewModel.swift */; };
 		FF4ACA4323E5E51B00BE35CA /* ValuteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4ACA4223E5E51B00BE35CA /* ValuteCellViewModel.swift */; };
 		FF4ACA4523E5E93600BE35CA /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4ACA4423E5E93600BE35CA /* Double.swift */; };
 		FF71B42D23F9579E000316CB /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71B42C23F9579E000316CB /* UITableView.swift */; };
 		FFC92F76246B06AD00EE53F1 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC92F75246B06AD00EE53F1 /* HttpClient.swift */; };
 		FFC92F78246B097900EE53F1 /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC92F77246B097900EE53F1 /* HTTPURLResponse.swift */; };
-		FFC92F7A246C49C600EE53F1 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC92F79246C49C600EE53F1 /* JSONParser.swift */; };
 		FFCBE30C2327B6A50037ABA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCBE30B2327B6A50037ABA0 /* AppDelegate.swift */; };
 		FFCBE3112327B6A50037ABA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCBE30F2327B6A50037ABA0 /* Main.storyboard */; };
 		FFCBE3132327B6A60037ABA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFCBE3122327B6A60037ABA0 /* Assets.xcassets */; };
@@ -26,13 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF04F19124D49EB700BF6C58 /* Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
 		FF4ACA4023E5E42F00BE35CA /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
 		FF4ACA4223E5E51B00BE35CA /* ValuteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuteCellViewModel.swift; sourceTree = "<group>"; };
 		FF4ACA4423E5E93600BE35CA /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		FF71B42C23F9579E000316CB /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		FFC92F75246B06AD00EE53F1 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		FFC92F77246B097900EE53F1 /* HTTPURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPURLResponse.swift; sourceTree = "<group>"; };
-		FFC92F79246C49C600EE53F1 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		FFCBE3082327B6A50037ABA0 /* Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFCBE30B2327B6A50037ABA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFCBE3102327B6A50037ABA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +78,7 @@
 		FF71B42E23F957B7000316CB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FF04F19124D49EB700BF6C58 /* Decodable.swift */,
 				FF4ACA4423E5E93600BE35CA /* Double.swift */,
 				FFC92F77246B097900EE53F1 /* HTTPURLResponse.swift */,
 				FF71B42C23F9579E000316CB /* UITableView.swift */,
@@ -104,7 +105,6 @@
 		FFCBE30A2327B6A50037ABA0 /* Exchange */ = {
 			isa = PBXGroup;
 			children = (
-				FFCBE30F2327B6A50037ABA0 /* Main.storyboard */,
 				FFCBE30B2327B6A50037ABA0 /* AppDelegate.swift */,
 				FF4ACA4723E5EB9700BE35CA /* View */,
 				FF4ACA4623E5EB7B00BE35CA /* ViewModel */,
@@ -114,6 +114,7 @@
 				FFCBE329232825770037ABA0 /* NetworkService */,
 				FFCBE3122327B6A60037ABA0 /* Assets.xcassets */,
 				FFCBE3142327B6A60037ABA0 /* LaunchScreen.storyboard */,
+				FFCBE30F2327B6A50037ABA0 /* Main.storyboard */,
 				FFCBE3172327B6A60037ABA0 /* Info.plist */,
 			);
 			path = Exchange;
@@ -124,7 +125,6 @@
 			children = (
 				FFCBE3212327CD640037ABA0 /* Networker.swift */,
 				FFC92F75246B06AD00EE53F1 /* HttpClient.swift */,
-				FFC92F79246C49C600EE53F1 /* JSONParser.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -203,10 +203,10 @@
 				FFCBE32B23282F5C0037ABA0 /* ValuteCell.swift in Sources */,
 				FF4ACA4123E5E42F00BE35CA /* ExchangeViewModel.swift in Sources */,
 				FFC92F78246B097900EE53F1 /* HTTPURLResponse.swift in Sources */,
+				FF04F19224D49EB700BF6C58 /* Decodable.swift in Sources */,
 				FFC92F76246B06AD00EE53F1 /* HttpClient.swift in Sources */,
 				FFCBE31E2327C61C0037ABA0 /* ExchangeTableViewController.swift in Sources */,
 				FFCBE32D23283CFE0037ABA0 /* RepeatingTimer.swift in Sources */,
-				FFC92F7A246C49C600EE53F1 /* JSONParser.swift in Sources */,
 				FF4ACA4323E5E51B00BE35CA /* ValuteCellViewModel.swift in Sources */,
 				FFCBE3202327CAE40037ABA0 /* Valute.swift in Sources */,
 				FF71B42D23F9579E000316CB /* UITableView.swift in Sources */,

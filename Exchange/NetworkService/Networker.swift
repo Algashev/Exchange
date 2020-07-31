@@ -9,29 +9,27 @@
 import Foundation
 
 class Networker {
-    typealias NetworkerCompletion<T: Decodable> = (_ result: Result<T, Error>) -> ()
+    typealias Completion<T: Decodable> = (_ result: Result<T, Error>) -> ()
     
     static private func request<T: Decodable>(
         _ type: T.Type,
         from url: URL,
-        completion: @escaping NetworkerCompletion<T>)
+        completion: @escaping Completion<T>)
     {
-        DispatchQueue(label: "algashev.Exchange.requestJSON").async {
-            HttpClient.dataTask(with: url) { (result) in
-                switch result {
-                case .success(let jsonData):
-                    let parsingResult = JSONParser.decode(T.self, from: jsonData)
-                    switch parsingResult {
-                    case .success(let data):
-                        completion(.success(data))
-                    case .failure(let error):
-                        Networker.logError(error, url)
-                        completion(.failure(error))
-                    }
-                case .failure(let error):
+        HttpClient.dataTask(with: url) { (result) in
+            switch result {
+            case .success(let jsonData):
+                do {
+                    let decoder = JSONDecoder()
+                    let result = try T(decoding: jsonData, decoder: decoder)
+                    completion(.success(result))
+                } catch {
                     Networker.logError(error, url)
                     completion(.failure(error))
                 }
+            case .failure(let error):
+                Networker.logError(error, url)
+                completion(.failure(error))
             }
         }
     }
@@ -43,7 +41,8 @@ class Networker {
 
 extension Networker {
     static func getValutes(completion: @escaping(Daily) -> ()) {
-        guard let url = URL(string: "https://www.cbr-xml-daily.ru/daily_json.js") else { return }
+        let path = "https://www.cbr-xml-daily.ru/daily_json.js"
+        guard let url = URL(string: path) else { return }
 
         Networker.request(Daily.self, from: url) { (result) in
             switch result {
