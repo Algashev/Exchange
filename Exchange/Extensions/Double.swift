@@ -10,6 +10,6 @@ import Foundation
 
 extension Double {
     func format(_ format: String) -> String {
-        return String(format: format, self)
+        String(format: format, self)
     }
 }

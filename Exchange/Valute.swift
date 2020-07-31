@@ -13,14 +13,15 @@ struct Daily: Decodable {
     let previousDate: String
     let previousURL: String
     let timestamp: String
-    let valutes: [String: Valute]
+    private let valute: [String: Valute]
+    var valutes: [Valute] { self.valute.values.array }
     
     enum CodingKeys: String, CodingKey {
         case date = "Date"
         case previousDate = "PreviousDate"
         case previousURL = "PreviousURL"
         case timestamp = "Timestamp"
-        case valutes = "Valute"
+        case valute = "Valute"
     }
 }
 

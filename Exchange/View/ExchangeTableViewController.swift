@@ -37,12 +37,12 @@ class ExchangeTableViewController: UITableViewController {
 
 extension ExchangeTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.numberOfRows
+        self.viewModel.numberOfRows
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(ValuteCell.self, for: indexPath)
-        let cellViewModel = self.viewModel.cellViewModel(ForRowAt: indexPath)
+        let cellViewModel = self.viewModel.cellViewModel(forRowAt: indexPath)
         cell?.viewModel = cellViewModel
 
         return cell ?? UITableViewCell()

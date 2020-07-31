@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FF04F19224D49EB700BF6C58 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04F19124D49EB700BF6C58 /* Decodable.swift */; };
+		FF04F19624D4A3D100BF6C58 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04F19524D4A3D100BF6C58 /* Values.swift */; };
 		FF4ACA4123E5E42F00BE35CA /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4ACA4023E5E42F00BE35CA /* ExchangeViewModel.swift */; };
 		FF4ACA4323E5E51B00BE35CA /* ValuteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4ACA4223E5E51B00BE35CA /* ValuteCellViewModel.swift */; };
 		FF4ACA4523E5E93600BE35CA /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4ACA4423E5E93600BE35CA /* Double.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		FF04F19124D49EB700BF6C58 /* Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
+		FF04F19524D4A3D100BF6C58 /* Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Values.swift; sourceTree = "<group>"; };
 		FF4ACA4023E5E42F00BE35CA /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
 		FF4ACA4223E5E51B00BE35CA /* ValuteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuteCellViewModel.swift; sourceTree = "<group>"; };
 		FF4ACA4423E5E93600BE35CA /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				FF4ACA4423E5E93600BE35CA /* Double.swift */,
 				FFC92F77246B097900EE53F1 /* HTTPURLResponse.swift */,
 				FF71B42C23F9579E000316CB /* UITableView.swift */,
+				FF04F19524D4A3D100BF6C58 /* Values.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				FFC92F76246B06AD00EE53F1 /* HttpClient.swift in Sources */,
 				FFCBE31E2327C61C0037ABA0 /* ExchangeTableViewController.swift in Sources */,
 				FFCBE32D23283CFE0037ABA0 /* RepeatingTimer.swift in Sources */,
+				FF04F19624D4A3D100BF6C58 /* Values.swift in Sources */,
 				FF4ACA4323E5E51B00BE35CA /* ValuteCellViewModel.swift in Sources */,
 				FFCBE3202327CAE40037ABA0 /* Valute.swift in Sources */,
 				FF71B42D23F9579E000316CB /* UITableView.swift in Sources */,
