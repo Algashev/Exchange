@@ -17,7 +17,7 @@ class Networker {
         completion: @escaping NetworkerCompletion<T>)
     {
         DispatchQueue(label: "algashev.Exchange.requestJSON").async {
-            HttpClient.getJSON(from: url) { (result) in
+            HttpClient.dataTask(with: url) { (result) in
                 switch result {
                 case .success(let jsonData):
                     let parsingResult = JSONParser.decode(T.self, from: jsonData)

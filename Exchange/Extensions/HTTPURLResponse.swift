@@ -9,7 +9,11 @@
 import Foundation
 
 extension HTTPURLResponse {
+    var statusCodeDescription: String {
+        "\(self.statusCode) - \(self.localizedStatusCode)"
+    }
+    
     var localizedStatusCode: String {
-        return HTTPURLResponse.localizedString(forStatusCode: self.statusCode)
+        HTTPURLResponse.localizedString(forStatusCode: self.statusCode)
     }
 }
