@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HttpClient {
+struct HttpClient {
     enum Error: Swift.Error {
         case emptyData
         case unknownResponse
@@ -20,12 +20,12 @@ class HttpClient {
     static func dataTask(with url: URL, completion: @escaping httpResult) {
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, error) in
-            if let error = error {
+            if let error {
                 completion(.failure(error))
                 return
             }
             
-            guard let data = data else {
+            guard let data else {
                 let error = Error.emptyData
                 completion(.failure(error))
                 return

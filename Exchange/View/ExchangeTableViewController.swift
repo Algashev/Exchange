@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExchangeTableViewController: UITableViewController {
+final class ExchangeTableViewController: UITableViewController {
     private var viewModel: TableViewViewModelType = ExchangeViewModel()
     private var timer = RepeatingTimer(timeInterval: 30)
 
@@ -20,7 +20,7 @@ class ExchangeTableViewController: UITableViewController {
         self.timer.resume()
     }
 
-    @IBAction func refreshData(_ sender: Any) {
+    @IBAction private func refreshData(_ sender: Any) {
         self.reloadData()
         self.timer.reset()
         self.timer.resume()
@@ -28,12 +28,12 @@ class ExchangeTableViewController: UITableViewController {
     
     private func reloadData() {
         self.viewModel.reloadData { [weak self] in
-            self?.tableView.reloadData()
+            self?.tableView.reloadSections(IndexSet([0]), with: .automatic)
         }
     }
 }
 
-// MARK: - Table view data source
+// MARK: Table view data source
 
 extension ExchangeTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,10 +41,13 @@ extension ExchangeTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(ValuteCell.self, for: indexPath)
+        let reusableCell = tableView.dequeueReusableCell(ValuteCell.self, for: indexPath)
+        let cell = reusableCell as? ValuteCell
+        guard let cell else { return reusableCell }
+        
         let cellViewModel = self.viewModel.cellViewModel(forRowAt: indexPath)
-        cell?.viewModel = cellViewModel
+        cell.viewModel = cellViewModel
 
-        return cell ?? UITableViewCell()
+        return cell
     }
 }

@@ -11,20 +11,21 @@ import Foundation
 protocol TableViewViewModelType {
     var numberOfRows: Int { get }
     func cellViewModel(forRowAt indexPath: IndexPath) -> CellViewModelType?
-    func reloadData(completion: @escaping() -> ())
+    func reloadData(completion: @escaping () -> Void)
 }
 
-class ExchangeViewModel: TableViewViewModelType {
+final class ExchangeViewModel: TableViewViewModelType {
     private var valutes = [Valute]()
     var numberOfRows: Int { self.valutes.count }
     
     func cellViewModel(forRowAt indexPath: IndexPath) -> CellViewModelType? {
         guard indexPath.row < self.valutes.count else { return nil }
+        
         let valute = self.valutes[indexPath.row]
         return ValuteCellViewModel(valute)
     }
     
-    func reloadData(completion: @escaping() -> ()) {
+    func reloadData(completion: @escaping () -> Void) {
         Networker.getValutes { [weak self] (daily) in
             self?.valutes = daily.valutes.sorted { $0.charCode < $1.charCode }
             completion()

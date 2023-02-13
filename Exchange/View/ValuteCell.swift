@@ -8,14 +8,15 @@
 
 import UIKit
 
-class ValuteCell: UITableViewCell {
+final class ValuteCell: UITableViewCell {
     @IBOutlet private weak var charCodeLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var valueLabel: UILabel!
     
     weak var viewModel: CellViewModelType? {
         willSet(viewModel) {
-            guard let viewModel = viewModel else { return }
+            guard let viewModel else { return }
+            
             self.charCodeLabel.text = viewModel.charCode
             self.nameLabel.text = viewModel.name
             self.valueLabel.text = viewModel.value

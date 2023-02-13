@@ -8,26 +8,20 @@
 
 import Foundation
 
-class Networker {
-    typealias Completion<T: Decodable> = (_ result: Result<T, Error>) -> ()
+struct Networker {
+    typealias Completion<T: Decodable> = (_ result: Result<T, Error>) -> Void
     
     static private func request<T: Decodable>(
-        _ type: T.Type,
-        from url: URL,
+        with url: URL,
         completion: @escaping Completion<T>)
     {
-        HttpClient.dataTask(with: url) { (result) in
-            switch result {
-            case .success(let jsonData):
-                do {
-                    let decoder = JSONDecoder()
-                    let result = try T(decoding: jsonData, decoder: decoder)
-                    completion(.success(result))
-                } catch {
-                    Networker.logError(error, url)
-                    completion(.failure(error))
-                }
-            case .failure(let error):
+        HttpClient.dataTask(with: url) { result in
+            do {
+                let data = try result.get()
+                let decoder = JSONDecoder()
+                let result = try T(decoding: data, decoder: decoder)
+                completion(.success(result))
+            } catch {
                 Networker.logError(error, url)
                 completion(.failure(error))
             }
@@ -40,15 +34,15 @@ class Networker {
 }
 
 extension Networker {
-    static func getValutes(completion: @escaping(Daily) -> ()) {
-        let path = "https://www.cbr-xml-daily.ru/daily_json.js"
-        guard let url = URL(string: path) else { return }
+    static func getValutes(completion: @escaping (Daily) -> Void) {
+        let urlString = "https://www.cbr-xml-daily.ru/daily_json.js"
+        guard let url = URL(string: urlString) else { return }
 
-        Networker.request(Daily.self, from: url) { (result) in
+        Networker.request(with: url) { (result: Result<Daily, Error>) in
             switch result {
-            case .success(let daily):
+            case let .success(daily):
                 DispatchQueue.main.async { completion(daily) }
-            case .failure(let error):
+            case let .failure(error):
                 print(error)
             }
         }
